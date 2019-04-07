@@ -92,4 +92,13 @@ void List::remove(int k)
 	}
 	
 	//Implementations of missing operations
+int List::get (int k)
+{
+	Node* iptr;
+	for (int i=0; i<k; i++)
+	{
+		iptr = iptr->link;
+	}
+	return iptr->data;
+}
 	
