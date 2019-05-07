@@ -16,6 +16,12 @@ class List::Node //self-referential Node class
 	};//end Node class definition (can only be seen by the List class)
 
 
+List::~List()
+{
+    while(num_elements > 0)
+      remove(1);
+}
+	
 int List::size()
  {
     return num_elements;
@@ -25,7 +31,8 @@ void List::insert(int val, int k)
 {
 	if (k < 1 or k > num_elements +1) //if the location is invalid
 	     throw out_of_range("List::insert("+to_string(val)+", " +to_string(k)+") failed. (valid indices are 1 to "+to_string(num_elements+1)+")");//throw an "out_of_range" exception
-
+	
+	
 	Node* newPtr = new Node{val};
 	
 	if(k == 1)
@@ -95,8 +102,3 @@ int List::get (int k)
 	return iptr->data;
 }
 	
-List::~List()
-{
-    while(num_elements > 0)
-      remove(1);
-}
